@@ -18,6 +18,8 @@ package com.github.ismail2ov.petclinic;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.github.ismail2ov.petclinic.vet.Vet;
+import java.util.Collection;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,7 +47,8 @@ class PetClinicIntegrationTests {
 	@Test
 	void testFindAll() throws Exception {
 		vets.findAll();
-		vets.findAll(); // served from cache
+		Collection<Vet> result = vets.findAll(); // served from cache
+		assertThat(result).hasSize(6);
 	}
 
 	@Test
